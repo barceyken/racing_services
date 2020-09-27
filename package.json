@@ -1,0 +1,39 @@
+{
+  "name": "racing_services",
+  "version": "0.1.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --open --config webpack.dev.ts",
+		"build": "webpack --mode production --config webpack.prod.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barceyken/racing_services.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barceyken/racing_services/issues"
+  },
+  "homepage": "https://github.com/barceyken/racing_services#readme",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/html-webpack-plugin": "^3.2.3",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/webpack": "^4.41.22",
+    "awesome-typescript-loader": "^5.2.1",
+    "html-webpack-plugin": "^4.5.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
