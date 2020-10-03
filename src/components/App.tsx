@@ -2,6 +2,8 @@ import * as React from "react";
 import CircuitTimes from "../api/CircuitTimes";
 import { normalizeTime } from "../Utils";
 import Classification from "./Classification";
+import DriverPage from "./Driver";
+import { BrowserRouter as Router, Route, Link, Switch, useParams } from "react-router-dom";
 
 export interface IAppProps { }
 
@@ -55,19 +57,34 @@ export default class App extends React.Component<IAppProps, IAppState> {
 
 	componentDidMount() {
 		let circuitTimes = new CircuitTimes();
-		circuitTimes.requestCircuitTimes().then(this.processData);
+		circuitTimes.requestCircuitTimes().then(this.generateAppState);
 	}
 
 	render() {
 		return (
-			<div>
-				<h1>World Kart Championship :)</h1>
-				<Classification drivers={this.state.driversResults} races={this.state.races} ladder={this.state.ladder} />
-			</div>
+			<Router>
+				<div>
+					<h1>World Kart Championship :)</h1>
+				</div>
+				<Switch>
+					<Route exact path="/">
+						<Classification drivers={this.state.driversResults} races={this.state.races} ladder={this.state.ladder} />
+					</Route>
+					<Route path="/driver/:driverId">
+						<this.renderDriver />
+						{/* <Driver drivers={this.state.driversResults} races={this.state.races} ladder={this.state.ladder} /> */}
+					</Route>
+				</Switch>
+			</Router>
 		);
 	}
 
-	private processData = (result: string) => {
+	renderDriver = () => {
+		let { driverId } = useParams<{ driverId: string }>();
+		return <DriverPage driver={this.getDriver(driverId)} races={this.state.races} ladder={this.state.ladder} />
+	}
+
+	private generateAppState = (result: string) => {
 		const results: IDriverResults[] = JSON.parse(result);
 		const races = this.buildRaces(results);
 		const ladder = this.buildLadder(races);
@@ -141,6 +158,16 @@ export default class App extends React.Component<IAppProps, IAppState> {
 		var valA = parseInt(a.time.replace(/\:|\./, ""));
 		var valB = parseInt(b.time.replace(/\:|\./, ""));
 		return valA - valB;
+	}
+
+	private getDriver(driverId: string): IDriverResults {
+		for (let i = 0; i < this.state.driversResults.length; i++) {
+			const driver = this.state.driversResults[i];
+			if (driver._id == driverId) {
+				return driver;
+			}
+
+		}
 	}
 
 }

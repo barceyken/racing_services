@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import { IDriverResults, ILadderScore, IRace, IRacePosition } from "./App";
 
 export interface IClassificationProps {
@@ -8,9 +9,6 @@ export interface IClassificationProps {
 }
 
 export default class Classification extends React.Component<IClassificationProps, {}> {
-	constructor(props: IClassificationProps) {
-		super(props);
-	}
 
 	render() {
 		var results = this.props.drivers.map(result => this.renderDrivers(result));
@@ -19,6 +17,7 @@ export default class Classification extends React.Component<IClassificationProps
 
 		return (
 			<div>
+				<h1>Classification</h1>
 				{ladder}
 				<br />
 				{results}
@@ -37,24 +36,25 @@ export default class Classification extends React.Component<IClassificationProps
 	}
 
 	private LadderItem = (index: number, item: ILadderScore) => {
-		let driver = this.props.drivers.find(driver => driver._id == item.driverId);
+		const driver = this.props.drivers.find(driver => driver._id == item.driverId);
+		const linkUrl = "/driver/" + driver._id;
 		return (
-			<div>
+			<div key={driver._id}>
 				<div>{index}</div>
 				<div>{item.totalScore}</div>
-				<div>{driver.name}</div>
+				<Link to={linkUrl}>{driver.name}</Link>
 			</div>
 		);
 	}
 
-	private renderDrivers(drivers: IDriverResults): JSX.Element {
+	private renderDrivers(driver: IDriverResults): JSX.Element {
 		return (
-			<div key={drivers._id}>
+			<div key={driver._id}>
 				{/* <div>_id: {driverResults._id}</div> */}
-				<div>name: {drivers.name}</div>
-				<div>age: {drivers.age}</div>
-				<div>picture: {drivers.picture}</div>
-				<div>team: {drivers.team}</div>
+				<div>name: {driver.name}</div>
+				<div>age: {driver.age}</div>
+				<div>picture: {driver.picture}</div>
+				<div>team: {driver.team}</div>
 				{/* <div>{driverResults.races.map(race => (<div key={race.name}>{race.name} - {race.time}</div>))}</div> */}
 				<br />
 			</div>
