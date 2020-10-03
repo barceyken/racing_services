@@ -3,7 +3,7 @@ import CircuitTimes from "../api/CircuitTimes";
 import { normalizeTime } from "../Utils";
 import Classification from "./Classification";
 import DriverPage from "./Driver";
-import { BrowserRouter as Router, Route, Link, Switch, useParams } from "react-router-dom";
+import { Route, Switch, useParams, HashRouter } from "react-router-dom";
 
 export interface IAppProps { }
 
@@ -37,6 +37,7 @@ export interface ILadderScore {
 }
 
 interface IAppState {
+	dataLoaded: boolean
 	driversResults: IDriverResults[]
 	races: IRace[]
 	ladder: ILadderScore[]
@@ -49,6 +50,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
 	constructor(props: IAppProps) {
 		super(props);
 		this.state = {
+			dataLoaded: false,
 			driversResults: [],
 			races: [],
 			ladder: []
@@ -62,26 +64,36 @@ export default class App extends React.Component<IAppProps, IAppState> {
 
 	render() {
 		return (
-			<Router>
+			<HashRouter>
 				<div>
 					<h1>World Kart Championship :)</h1>
 				</div>
-				<Switch>
-					<Route exact path="/">
-						<Classification drivers={this.state.driversResults} races={this.state.races} ladder={this.state.ladder} />
-					</Route>
-					<Route path="/driver/:driverId">
-						<this.renderDriver />
-						{/* <Driver drivers={this.state.driversResults} races={this.state.races} ladder={this.state.ladder} /> */}
-					</Route>
-				</Switch>
-			</Router>
+				{ this.state.dataLoaded ?
+					<Switch>
+						<Route exact path="/">
+							<Classification drivers={this.state.driversResults} races={this.state.races} ladder={this.state.ladder} />
+						</Route>
+						<Route path="/driver/:driverId">
+							<this.renderDriver />
+							{/* <Driver drivers={this.state.driversResults} races={this.state.races} ladder={this.state.ladder} /> */}
+						</Route>
+					</Switch>
+					:
+					// TODO loading component
+					<div>Loading...</div>}
+			</HashRouter>
 		);
 	}
 
 	renderDriver = () => {
 		let { driverId } = useParams<{ driverId: string }>();
-		return <DriverPage driver={this.getDriver(driverId)} races={this.state.races} ladder={this.state.ladder} />
+		const driver = this.getDriver(driverId)
+		if (driver) {
+			return <DriverPage driver={this.getDriver(driverId)} races={this.state.races} ladder={this.state.ladder} />
+		} else {
+			// TODO empty driver page.
+			return <div>Driver not found</div>
+		}
 	}
 
 	private generateAppState = (result: string) => {
@@ -90,6 +102,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
 		const ladder = this.buildLadder(races);
 
 		this.setState({
+			dataLoaded: true,
 			driversResults: results,
 			races,
 			ladder
