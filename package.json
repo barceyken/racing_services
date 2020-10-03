@@ -4,9 +4,9 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "webpack-dev-server --open --config webpack.dev.ts",
-		"build": "webpack --mode production --config webpack.prod.ts"
+    "build": "webpack --mode production --config webpack.prod.ts"
   },
   "repository": {
     "type": "git",
@@ -25,11 +25,14 @@
   },
   "devDependencies": {
     "@types/html-webpack-plugin": "^3.2.3",
+    "@types/jest": "^26.0.14",
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
     "@types/webpack": "^4.41.22",
     "awesome-typescript-loader": "^5.2.1",
     "html-webpack-plugin": "^4.5.0",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.4.1",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.3",
     "webpack": "^4.44.2",

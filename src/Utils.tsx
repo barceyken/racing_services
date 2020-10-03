@@ -5,17 +5,21 @@
  * @param time string to parse
  */
 export function normalizeTime(time: string) {
-	var hours = "00";
+	var hours = "0";
 	var mins = "00";
 	var secs = "00";
 	var msecs = "000";
 	var tokens = time.split(".");
 	if (tokens.length == 2) {
 		msecs = this.padZeros(3, tokens[1], true);
+	}
+	if (tokens.length > 0) {
 		tokens = tokens[0].split(":");
-		hours = tokens[0];
-		mins = this.padZeros(2, tokens[1]);
-		secs = this.padZeros(2, tokens[2]);
+		if (tokens.length === 3) {
+			hours = tokens[0];
+			mins = this.padZeros(2, tokens[1]);
+			secs = this.padZeros(2, tokens[2]);
+		}
 	}
 	return hours + ":" + mins + ":" + secs + "." + msecs;
 }
