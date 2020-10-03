@@ -1,19 +1,14 @@
 import * as React from "react";
-import { useParams } from "react-router-dom";
-import { IDriverResults, ILadderScore, IRace, IRacePosition } from "./App";
+import CircuitTimes, { IDriver } from "../models/CircuitTimes";
 
 export interface IDriverProps {
-	driver: IDriverResults
-	races: IRace[]
-	ladder: ILadderScore[]
+	driver: IDriver
+	circuitTimes: CircuitTimes
 }
 
 export default class DriverPage extends React.Component<IDriverProps, {}> {
 
 	render() {
-		// TODO React Hooks es incompatible con las clases, cambiar a funciones?
-		// let { driverId } = useParams<IDriverUrlParams>();
-		// const driver = this.getDriver(driverId);
 		const driver = this.props.driver;
 		return (
 			<div>

@@ -1,6 +1,6 @@
 
 
-export default class CircuitTimes {
+export default class CircuitTimesService {
 
 	requestCircuitTimes() {
 		// De momento los datos se obtienen de un fichero

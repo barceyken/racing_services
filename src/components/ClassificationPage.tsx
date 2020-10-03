@@ -1,19 +1,17 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { IDriverResults, ILadderScore, IRace, IRacePosition } from "./App";
+import CircuitTimes, { IDriver, ILadderScore, IRace, IRacePosition } from "../models/CircuitTimes";
 
 export interface IClassificationProps {
-	drivers: IDriverResults[]
-	races: IRace[]
-	ladder: ILadderScore[]
+	circuitTimes: CircuitTimes
 }
 
-export default class Classification extends React.Component<IClassificationProps, {}> {
+export default class ClassificationPage extends React.Component<IClassificationProps, {}> {
 
 	render() {
-		var results = this.props.drivers.map(result => this.renderDrivers(result));
-		var races = this.props.races.map(race => this.renderRaceItem(race));
-		var ladder = this.renderLadder(this.props.ladder);
+		var results = this.props.circuitTimes.drivers.map(result => this.renderDrivers(result));
+		var races = this.props.circuitTimes.races.map(race => this.renderRaceItem(race));
+		var ladder = this.renderLadder(this.props.circuitTimes.ladder);
 
 		return (
 			<div>
@@ -36,7 +34,7 @@ export default class Classification extends React.Component<IClassificationProps
 	}
 
 	private LadderItem = (index: number, item: ILadderScore) => {
-		const driver = this.props.drivers.find(driver => driver._id == item.driverId);
+		const driver = this.props.circuitTimes.drivers.find(driver => driver._id == item.driverId);
 		const linkUrl = "/driver/" + driver._id;
 		return (
 			<div key={driver._id}>
@@ -47,7 +45,7 @@ export default class Classification extends React.Component<IClassificationProps
 		);
 	}
 
-	private renderDrivers(driver: IDriverResults): JSX.Element {
+	private renderDrivers(driver: IDriver): JSX.Element {
 		return (
 			<div key={driver._id}>
 				{/* <div>_id: {driverResults._id}</div> */}
