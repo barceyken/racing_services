@@ -38,6 +38,12 @@ export default class CircuitTimes {
 	races: IRace[];
 	ladder: ILadderScore[];
 
+	constructor() {
+		this.drivers = [];
+		this.races = [];
+		this.ladder = [];
+	}
+
 	fetchData(): Promise<void> {
 		let circuitTimesService = new CircuitTimesService();
 		return circuitTimesService.requestCircuitTimes().then(this.parseData);
@@ -52,10 +58,17 @@ export default class CircuitTimes {
 		}
 	}
 
-	private parseData = (response: string): void => {
-		this.drivers = JSON.parse(response);
-		this.races = this.buildRaces(this.drivers);
-		this.ladder = this.buildLadder(this.races);
+	protected parseData = (response: string): void => {
+		try {
+			var data = JSON.parse(response);
+			if (data instanceof Array) {
+				this.drivers = data;
+				this.races = this.buildRaces(this.drivers);
+				this.ladder = this.buildLadder(this.races);
+			}
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	private buildLadder(races: IRace[]): ILadderScore[] {
