@@ -1,10 +1,17 @@
 import * as path from "path";
 import * as webpack from "webpack";
 import * as HtmlWebPackPlugin from "html-webpack-plugin";
+import * as CopyPlugin from "copy-webpack-plugin";
 
 const htmlPlugin = new HtmlWebPackPlugin({
 	template: "./src/index.html",
 	filename: "./index.html"
+});
+
+const copyPlugin = new CopyPlugin({
+	patterns: [
+		{ from: 'data.json' }
+	],
 });
 
 const config: webpack.Configuration = {
@@ -16,7 +23,7 @@ const config: webpack.Configuration = {
 	},
 	resolve: {
 		// Add '.ts' and '.tsx' as resolvable extensions.
-		extensions: [".ts", ".tsx", ".js", ".json"]
+		extensions: [".ts", ".tsx", ".js"]
 	},
 
 	module: {
@@ -25,7 +32,8 @@ const config: webpack.Configuration = {
 			{ test: /\.tsx?$/, loader: "awesome-typescript-loader" }
 		]
 	},
-	plugins: [htmlPlugin]
+
+	plugins: [htmlPlugin, copyPlugin]
 };
 
 export default config;

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "dev": "webpack-dev-server --open --config webpack.dev.ts",
-    "build": "webpack --mode production --config webpack.prod.ts"
+    "build": "jest && webpack --mode production --config webpack.prod.ts"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
+    "@types/copy-webpack-plugin": "^6.0.0",
     "@types/html-webpack-plugin": "^3.2.3",
     "@types/jest": "^26.0.14",
     "@types/react": "^16.9.49",
@@ -32,6 +33,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/webpack": "^4.41.22",
     "awesome-typescript-loader": "^5.2.1",
+    "copy-webpack-plugin": "^6.2.0",
     "html-webpack-plugin": "^4.5.0",
     "jest": "^26.4.2",
     "ts-jest": "^26.4.1",
