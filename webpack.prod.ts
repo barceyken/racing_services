@@ -23,13 +23,31 @@ const config: webpack.Configuration = {
 	},
 	resolve: {
 		// Add '.ts' and '.tsx' as resolvable extensions.
-		extensions: [".ts", ".tsx", ".js"]
+		extensions: [".ts", ".tsx", ".js", ".less"]
 	},
 
 	module: {
 		rules: [
 			// All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-			{ test: /\.tsx?$/, loader: "awesome-typescript-loader" }
+			{ test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+			{
+				test: /\.less$/i,
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							sourceMap: true,
+						},
+					},
+					{
+						loader: 'less-loader',
+						options: {
+							sourceMap: true,
+						},
+					},
+				],
+			},
 		]
 	},
 
