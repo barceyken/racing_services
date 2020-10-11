@@ -1,0 +1,52 @@
+.classification-page {
+
+
+}
+
+.classification-item {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	margin-bottom: 10px;
+	background: linear-gradient(90deg, rgba(245,245,245,1) 0%, rgba(255,255,255,0) 125%);
+	box-shadow: -3px 3px 6px rgba(0,0,0,0.5);
+	border-radius: 60px 0 0 60px;
+
+	&:nth-child(1) {
+		background-color: gold;
+		background: linear-gradient(90deg, rgba(255,215,0,1) 0%, rgba(255,255,255,0) 125%);
+	}
+	&:nth-child(2) {
+		background-color: silver;
+		background: linear-gradient(90deg, silver 0%, rgba(255,255,255,0) 125%);
+	}
+	&:nth-child(3) {
+		background-color: #cd7f32;
+		background: linear-gradient(90deg, #cd7f32 0%, rgba(255,255,255,0) 125%);
+	}
+
+	* > {
+		margin: 0 10px;
+	}
+
+	.position{
+		font-size: 32px;
+		width: 60px;
+		text-align: center;
+	}
+	.score{
+		font-size: 24px;
+		width: 100px;
+		text-align: center;
+	}
+	.driver-name {
+		flex-grow: 1;
+		font-size: 24px;
+	}
+	.driver-thumbnail {
+		width: 80px;
+		min-height: 84px;
+		border: 1px solid black;
+		border-radius: 5px;
+	}
+}

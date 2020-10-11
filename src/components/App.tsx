@@ -29,21 +29,26 @@ export default class App extends React.Component<IAppProps, IAppState> {
 	render() {
 		return (
 			<HashRouter>
-				<div>
+				<header>
 					<h1>World Kart Championship :)</h1>
-				</div>
-				{ this.state.dataLoaded ?
-					<Switch>
-						<Route exact path="/">
-							<ClassificationPage circuitTimes={this.circuitTimes} />
-						</Route>
-						<Route path="/driver/:driverId">
-							<this.renderDriverPage />
-						</Route>
-					</Switch>
-					:
-					// TODO loading component
-					<div>Loading...</div>}
+				</header>
+				<main>
+					{this.state.dataLoaded ?
+						<Switch>
+							<Route exact path="/">
+								<ClassificationPage circuitTimes={this.circuitTimes} />
+							</Route>
+							<Route path="/driver/:driverId">
+								<this.renderDriverPage />
+							</Route>
+						</Switch>
+						:
+						// TODO loading component
+						<div>Loading...</div>}
+				</main>
+				<footer>
+					<h1>World Kart Championship :)</h1>
+				</footer>
 			</HashRouter>
 		);
 	}
