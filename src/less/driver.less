@@ -1,0 +1,25 @@
+.driver-page{
+	background-color: blueviolet;
+}
+
+.driver-data {
+	.driver-thumbnail{
+		width: 128px;
+		height: 128px;
+	}
+}
+
+.driver-classifications{
+	background-color: pink;
+	tbody tr{
+		&.highlight{
+			font-weight: bold;
+		}
+		&:nth-child(2n+1){
+			background-color: rgba(0,0,0,0.1);
+		}
+	}
+	td{
+		padding: 12px 20px 12px;
+	}
+}

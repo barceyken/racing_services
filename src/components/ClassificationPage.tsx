@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import CircuitTimes, { IDriver, ILadderScore, IRace, IRacePosition } from "../models/CircuitTimes";
+import CircuitTimes, { ILadderScore } from "../models/CircuitTimes";
 import "../less/classification.less"
 
 export interface IClassificationProps {
@@ -40,4 +40,3 @@ export default class ClassificationPage extends React.Component<IClassificationP
 	}
 
 }
-

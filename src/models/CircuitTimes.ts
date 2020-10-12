@@ -129,7 +129,7 @@ export default class CircuitTimes {
 		}
 	}
 
-	private sortRaceTimes(a: IRacePosition, b: IRacePosition): number {
+	public sortRaceTimes(a: IRacePosition, b: IRacePosition): number {
 		var valA = parseInt(a.time.replace(/\:|\./, ""));
 		var valB = parseInt(b.time.replace(/\:|\./, ""));
 		return valA - valB;
