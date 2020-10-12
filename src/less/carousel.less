@@ -1,3 +1,5 @@
+@import "mediaQuery.less";
+
 .carousel{
 	display: flex;
 	width: 100%;
@@ -5,12 +7,14 @@
 	.left-arrow,
 	.right-arrow {
 		align-self: stretch;
-		width: 60px;
 		font-size: 40px;
 		font-weight: bolder;
 		text-align: center;
 		display: flex;
 		cursor: pointer;
+		@media @desktop{
+			width: 60px;
+		}
 
 		.arrow-icon{
 			align-self: center;
@@ -23,7 +27,10 @@
 		}
 	}
 	.content {
-		margin: 0 20px;
+		// margin: 0 10px;
+		@media @desktop {
+			margin: 0 20px;
+		}
 		min-height: 300px;
 		flex-grow: 1;
 		overflow: auto;

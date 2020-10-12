@@ -40,7 +40,7 @@ export default class DriverPage extends React.Component<IDriverProps, {}> {
 		return (
 			<CarouselPanel key="race-times">
 				<div className="race-times">
-					<h2>Races Times</h2>
+					<h2>Driver Races Times</h2>
 					<table>
 						<thead className="race-times-item" key="headers">
 							<tr>

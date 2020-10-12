@@ -1,3 +1,5 @@
+@import "mediaQuery.less";
+
 .classification-page {
 
 
@@ -10,7 +12,7 @@
 	margin-bottom: 10px;
 	background: linear-gradient(90deg, rgba(245,245,245,1) 0%, rgba(255,255,255,0) 125%);
 	box-shadow: -3px 3px 6px rgba(0,0,0,0.5);
-	border-radius: 60px 0 0 60px;
+	overflow: hidden;
 
 	&:nth-child(1) {
 		background-color: gold;
@@ -25,27 +27,42 @@
 		background: linear-gradient(90deg, #cd7f32 0%, rgba(255,255,255,0) 125%);
 	}
 
-	* > {
+	& > *{
 		margin: 0 10px;
 	}
 
 	.position{
 		font-size: 32px;
-		width: 60px;
+		min-width: 60px;
 		text-align: center;
 	}
 	.score{
 		font-size: 24px;
-		width: 100px;
+		min-width: 100px;
 		text-align: center;
 	}
+
+	.driver-data {
+		flex-grow: 0;
+		display: flex;
+		align-items: center;
+	}
+
+	.driver-info {
+		margin-left: 10px;
+	}
+
 	.driver-name {
 		flex-grow: 1;
 		font-size: 24px;
 	}
 	.driver-thumbnail {
-		width: 80px;
-		min-height: 84px;
+		width: 64px;
+		min-height: 64px;
+		@media @desktop {
+			width: 84px;
+			min-height: 84px;
+		}
 		border: 1px solid black;
 		border-radius: 5px;
 	}

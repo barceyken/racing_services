@@ -15,7 +15,7 @@ export default class ClassificationPage extends React.Component<IClassificationP
 
 		return (
 			<div className="classification-page">
-				<h1>Classification</h1>
+				<h1>Global Classification</h1>
 				<ul>
 					{items}
 				</ul>
@@ -31,11 +31,13 @@ export default class ClassificationPage extends React.Component<IClassificationP
 			<li className="classification-item" key={driver._id}>
 				<div className="position">{index + 1}</div>
 				<div className="score">{item.totalScore}</div>
-				<img className="driver-thumbnail" src={driver.picture} />
-				<div>
-					<Link className="driver-name" to={driverLink}>{driver.name}</Link>
-					<div className="driver-team">{driver.team}</div>
-				</div>
+				<Link className="driver-data" to={driverLink}>
+					<img className="driver-thumbnail" src={driver.picture} />
+					<div className="driver-info">
+						<div className="driver-name">{driver.name}</div>
+						<div className="driver-team">{driver.team}</div>
+					</div>
+				</Link>
 			</li>
 		);
 	}

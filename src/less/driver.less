@@ -1,49 +1,59 @@
+@import "mediaQuery.less";
+
 .driver-page{
-	// background-color: blueviolet;
-}
-
-.driver-data {
-	display: flex;
-	margin-bottom: 20px;
-	margin-left: 80px;
-	.driver-thumbnail{
-		width: 128px;
-		height: 128px;
-	}
-	.driver-info {
-		margin-left: 20px;
-	}
-	.driver-name {
-		font-size: 36px;
-		font-weight: bold;
-	}
-	.driver-team {
-		font-size: 24px;
-	}
-	.driver-age {
-		font-size: 24px;
-	}
-}
-
-.driver-classifications{
-	// background-color: pink;
-
-	table{
-		border-collapse: collapse;
-		width: 100%;
-	}
-
-	tbody tr{
-		&.highlight{
-			font-weight: bolder;
+	.driver-data {
+		display: flex;
+		margin-bottom: 20px;
+		@media @desktop{
+			margin-left: 80px;
 		}
-		&:nth-child(2n+1){
-			// background-color: rgba(0,0,0,0.1);
-			background-color: #f4f4f4;;
+		.driver-thumbnail{
+			width: 128px;
+			height: 128px;
+		}
+		.driver-info {
+			margin-left: 20px;
+		}
+		.driver-name {
+			font-size: 36px;
+			font-weight: bold;
+		}
+		.driver-team {
+			font-size: 24px;
+		}
+		.driver-age {
+			font-size: 24px;
 		}
 	}
-	th,td{
-		padding: 12px 20px 12px;
-		text-align: left;
+
+	.driver-classifications{
+		margin: 0 -5%;
+		@media @desktop{
+			margin: 0;
+		}
+		a {
+			font-weight: bold;
+		}
+		table{
+			border-collapse: collapse;
+			width: 100%;
+		}
+		tbody tr{
+			&.highlight{
+				font-weight: bolder;
+				background-color: #3c3c3c !important;
+				color: white;
+			}
+			&:nth-child(2n+1){
+				background-color: #f4f4f4;
+			}
+		}
+		th,td{
+			padding: 8px 5px 8px;
+			@media @desktop{
+				padding: 12px 20px 12px;
+			}
+			text-align: left;
+		}
 	}
 }
