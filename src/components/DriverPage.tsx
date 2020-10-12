@@ -107,13 +107,13 @@ export default class DriverPage extends React.Component<IDriverProps, {}> {
 	}
 
 	private renderRaces = () => {
-		return this.props.circuitTimes.races.map((race) => this.renderRace(race))
+		return this.props.circuitTimes.races.map((race,index) => this.renderRace(race,index))
 	}
 
-	private renderRace = (race: IRace) => {
+	private renderRace = (race: IRace, index: number) => {
 		const positions = race.positions.map((position) => this.renderRaceResult(position))
 		return (
-			<CarouselPanel key="race-positions">
+			<CarouselPanel key={"race-positions-"+index}>
 				<div className="race-positions">
 					<h2>{race.name} Classification</h2>
 					<table>

@@ -6,16 +6,16 @@
 
 	.left-arrow,
 	.right-arrow {
+		display: none;
 		align-self: stretch;
 		font-size: 40px;
 		font-weight: bolder;
 		text-align: center;
-		display: flex;
 		cursor: pointer;
 		@media @desktop{
-			width: 60px;
+			display: flex;
+			min-width: 60px;
 		}
-
 		.arrow-icon{
 			align-self: center;
 			margin: auto;
@@ -27,12 +27,18 @@
 		}
 	}
 	.content {
-		// margin: 0 10px;
 		@media @desktop {
 			margin: 0 20px;
 		}
 		min-height: 300px;
 		flex-grow: 1;
-		overflow: auto;
+		overflow-x: hidden;
+		display: flex;
+		flex-wrap: nowrap;
+	}
+	.carousel-panel {
+		width: 100%;
+		flex: 0 0 auto;
 	}
 }
+
