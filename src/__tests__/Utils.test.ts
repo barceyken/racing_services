@@ -2,12 +2,12 @@ import * as Utils from "../Utils";
 
 describe('Utils test suit', () => {
 	test('normalizeTime', () => {
-		expect(Utils.normalizeTime("")).toBe("0:00:00.000");
-		expect(Utils.normalizeTime("1:1:1")).toBe("1:01:01.000");
-		expect(Utils.normalizeTime("1:1:1.1")).toBe("1:01:01.100");
+		expect(Utils.normalizeTime("")).toBe("00:00:00.000");
+		expect(Utils.normalizeTime("1:1:1")).toBe("01:01:01.000");
+		expect(Utils.normalizeTime("1:1:1.1")).toBe("01:01:01.100");
 		expect(Utils.normalizeTime("12:30:4.56")).toBe("12:30:04.560");
-		expect(Utils.normalizeTime("1:")).toBe("0:00:00.000");
-		expect(Utils.normalizeTime("1:0:0.02")).toBe("1:00:00.020");
+		expect(Utils.normalizeTime("1:")).toBe("00:00:00.000");
+		expect(Utils.normalizeTime("1:0:0.02")).toBe("01:00:00.020");
 	});
 
 	test('padZeros', () => {
