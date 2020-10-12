@@ -30,7 +30,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
 		return (
 			<HashRouter>
 				<header>
-					<h1>World Kart Championship :)</h1>
+					<h1>World Kart Championship</h1>
 				</header>
 				<main>
 					{this.state.dataLoaded ?
@@ -47,10 +47,14 @@ export default class App extends React.Component<IAppProps, IAppState> {
 						<div>Loading...</div>}
 				</main>
 				<footer>
-					<h1>World Kart Championship :)</h1>
+					<h1>World Kart Championship</h1>
 				</footer>
 			</HashRouter>
 		);
+	}
+
+	static routeDriverLink(driverId: string): string {
+		return "/driver/" + driverId;
 	}
 
 	private renderDriverPage = () => {

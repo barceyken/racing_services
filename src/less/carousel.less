@@ -1,0 +1,31 @@
+.carousel{
+	display: flex;
+	width: 100%;
+
+	.left-arrow,
+	.right-arrow {
+		align-self: stretch;
+		width: 60px;
+		font-size: 40px;
+		font-weight: bolder;
+		text-align: center;
+		display: flex;
+		cursor: pointer;
+
+		.arrow-icon{
+			align-self: center;
+			margin: auto;
+		}
+
+		&:hover{
+			background-color: rgba(0,0,0,0.1);
+			transition: background-color 0.5s linear;
+		}
+	}
+	.content {
+		margin: 0 20px;
+		min-height: 300px;
+		flex-grow: 1;
+		overflow: auto;
+	}
+}

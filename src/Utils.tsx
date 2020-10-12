@@ -36,3 +36,13 @@ export function padZeros(size: number, s: string, right?: boolean) {
 	}
 	return s;
 }
+
+/**
+ * Get the module of the number in the given base
+ * Work with negative numbers.
+ * @param n number to be processed
+ * @param base the base of the module
+ */
+export function module(n: number, base: number): number {
+	return ((n % base) + base) % base;
+}

@@ -21,4 +21,15 @@ describe('Utils test suit', () => {
 		expect(Utils.padZeros(5, "123")).toBe("00123");
 		expect(Utils.padZeros(5, "123", true)).toBe("12300");
 	});
+
+	test('module', () => {
+		expect(Utils.module(0, 10)).toBe(0);
+		expect(Utils.module(3, 10)).toBe(3);
+		expect(Utils.module(-1, 10)).toBe(9);
+		expect(Utils.module(10, 10)).toBe(0);
+		expect(Utils.module(15, 10)).toBe(5);
+		expect(Utils.module(125, 10)).toBe(5);
+		expect(Utils.module(-15, 10)).toBe(5);
+		expect(Utils.module(-4, 2)).toBe(0);
+	});
 });

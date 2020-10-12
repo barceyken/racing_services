@@ -2,6 +2,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import CircuitTimes, { ILadderScore } from "../models/CircuitTimes";
 import "../less/classification.less"
+import App from "./App";
 
 export interface IClassificationProps {
 	circuitTimes: CircuitTimes
@@ -25,14 +26,14 @@ export default class ClassificationPage extends React.Component<IClassificationP
 
 	private ClassificationItem = (index: number, item: ILadderScore) => {
 		const driver = this.props.circuitTimes.drivers.find(driver => driver._id == item.driverId);
-		const linkUrl = "/driver/" + driver._id;
+		const driverLink = App.routeDriverLink(driver._id);
 		return (
 			<li className="classification-item" key={driver._id}>
 				<div className="position">{index + 1}</div>
 				<div className="score">{item.totalScore}</div>
 				<img className="driver-thumbnail" src={driver.picture} />
 				<div>
-					<Link className="driver-name" to={linkUrl}>{driver.name}</Link>
+					<Link className="driver-name" to={driverLink}>{driver.name}</Link>
 					<div className="driver-team">{driver.team}</div>
 				</div>
 			</li>

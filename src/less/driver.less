@@ -1,25 +1,49 @@
 .driver-page{
-	background-color: blueviolet;
+	// background-color: blueviolet;
 }
 
 .driver-data {
+	display: flex;
+	margin-bottom: 20px;
+	margin-left: 80px;
 	.driver-thumbnail{
 		width: 128px;
 		height: 128px;
 	}
+	.driver-info {
+		margin-left: 20px;
+	}
+	.driver-name {
+		font-size: 36px;
+		font-weight: bold;
+	}
+	.driver-team {
+		font-size: 24px;
+	}
+	.driver-age {
+		font-size: 24px;
+	}
 }
 
 .driver-classifications{
-	background-color: pink;
+	// background-color: pink;
+
+	table{
+		border-collapse: collapse;
+		width: 100%;
+	}
+
 	tbody tr{
 		&.highlight{
-			font-weight: bold;
+			font-weight: bolder;
 		}
 		&:nth-child(2n+1){
-			background-color: rgba(0,0,0,0.1);
+			// background-color: rgba(0,0,0,0.1);
+			background-color: #f4f4f4;;
 		}
 	}
-	td{
+	th,td{
 		padding: 12px 20px 12px;
+		text-align: left;
 	}
 }
