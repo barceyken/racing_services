@@ -2,7 +2,8 @@ import * as webpack from "webpack";
 import * as HtmlWebPackPlugin from "html-webpack-plugin";
 
 const htmlPlugin = new HtmlWebPackPlugin({
-	template: "./src/index.html"
+	template: "./src/index.html",
+	favicon: "./src/favicon.ico"
 });
 
 const config: webpack.Configuration = {

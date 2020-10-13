@@ -5,7 +5,8 @@ import * as CopyPlugin from "copy-webpack-plugin";
 
 const htmlPlugin = new HtmlWebPackPlugin({
 	template: "./src/index.html",
-	filename: "./index.html"
+	filename: "./index.html",
+	favicon: "./src/favicon.ico"
 });
 
 const copyPlugin = new CopyPlugin({
