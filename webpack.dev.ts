@@ -12,7 +12,7 @@ const config: webpack.Configuration = {
 		// Add '.ts' and '.tsx' as resolvable extensions.
 		extensions: [".ts", ".tsx", ".js", ".json", ".d.ts", ".less"]
 	},
-
+	devtool: "source-map",
 	module: {
 		rules: [
 			// All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
